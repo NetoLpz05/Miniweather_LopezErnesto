@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Miniweather_LopezE</string>
+    <string name="greeting">Bienvenido!</string>
+    <string name="next">Siguente</string>
+    <string name="rainy">LLuvioso</string>
+    <string name="cloudy">Nublado</string>
+    <string name="snowy">Nevado</string>
+    <string name="stormy">Contormetas</string>
+    <string name="sunny">Soleado</string>
+    <string name="windy">Con vientos</string>
 </resources>
