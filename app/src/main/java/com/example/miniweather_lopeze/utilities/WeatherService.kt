@@ -18,15 +18,18 @@ class WeatherService(private val context: Context) {
         return arrayOf("Ciudad de México", "Londres", "Paris", "Guadalajara", "Ciudad Obregón")
     }
 
-    private fun genWeather(): Weather{
+    fun generateWeather(): Weather{
         val temp = (-15..50).random()
-        var weatherIndex = -1
-        when(temp){
-            in -15..0 -> weatherIndex = 0
-            in 1..18 -> weatherIndex = (1..4).random()
-            in 19..25 -> weatherIndex = (4..5).random()
-            else -> weatherIndex = 6
+        val weatherIndex = when(temp){
+            in -15..0 -> 0
+            in 1..18 -> (1..4).random()
+            in 19..25 -> (4..5).random()
+            else -> 5
         }
         return Weather(temp, weatherStates[weatherIndex])
+    }
+
+    fun getWeather(city: String): Weather {
+        return generateWeather()
     }
 }

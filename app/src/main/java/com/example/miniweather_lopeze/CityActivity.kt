@@ -10,6 +10,7 @@ import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.miniweather_lopeze.utilities.WeatherService
 
@@ -22,7 +23,9 @@ class CityActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_city)
 
-        val mainView = findViewById<android.view.View>(R.id.main)
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
+
+        val mainView = findViewById<View>(R.id.main)
         ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -44,16 +47,15 @@ class CityActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
             }
         }
 
         val btnNext = findViewById<Button>(R.id.btn_save_city)
         btnNext.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java){
+            val intent = Intent(this, MainActivity::class.java).apply {
                 putExtra("city", citySelected)
             }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 }
